@@ -1,15 +1,10 @@
 'use strict';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { MessageField } from './components/MessageField'
-
-const sourceMessages = [
-    { text: 'Hello!', author: 'user' },
-    { text: 'How are you?', author: 'user' }
-];
+import { Layout } from './components/Layout/Layout';
 
 ReactDOM.render(
-    <MessageField messages={sourceMessages} />,
+    <Layout />,
     document.getElementById('root')
 );
 
