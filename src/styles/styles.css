@@ -2,7 +2,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h2 {
+h2, h3 {
     text-align: center;
     color: teal;
     margin: 0;
@@ -34,8 +34,9 @@ h2 {
     align-self: flex-start;
 }
 
-li {
-    list-style-type: none;
+.chat-list-link {
+    color: teal;
+    text-decoration: none;
 }
 
 .layout {

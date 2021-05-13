@@ -1,5 +1,5 @@
 'use strict';
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Routes } from './components/Routes/Routes';
 

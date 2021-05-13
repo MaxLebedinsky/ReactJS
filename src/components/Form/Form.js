@@ -26,8 +26,9 @@ export const Form = ({ onAddMessage }) => {
     }
 
     useEffect( () => {
+    // ставим фокус на инпут при каждом рендере формы
         input.current.focus();
-    }, []);
+    });
 
     return (
         <form className="form" onSubmit={handleSubmit}>

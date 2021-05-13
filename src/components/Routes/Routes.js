@@ -11,6 +11,9 @@ export const Routes = () => {
                 <Route exact path="/">
                     <Layout/>
                 </Route>
+                <Route exact path="/chats/">
+                    <Layout/>
+                </Route>
                 <Route path="/chats/:chatId">
                     <Layout/>
                 </Route>
