@@ -8,6 +8,10 @@ module.exports = {
         path: path.join(__dirname, "build"),
         filename: "bundle.js",
     },
+    devServer: {
+        port: 8080,
+        historyApiFallback: true,
+    },
     devtool: 'source-map',
     module: {
         rules: [{

@@ -1,10 +1,10 @@
 'use strict';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Layout } from './components/Layout/Layout';
+import { Routes } from './components/Routes/Routes';
 
 ReactDOM.render(
-    <Layout />,
+    <Routes />,
     document.getElementById('root')
 );
 

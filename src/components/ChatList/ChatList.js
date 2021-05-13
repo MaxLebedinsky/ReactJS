@@ -1,10 +1,11 @@
 import React from "react";
 import { List, ListItem } from '@material-ui/core';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 const chats = [
-    {chatId: 1, chatName: 'Chat 1'},
-    {chatId: 2, chatName: 'Chat 2'},
-    {chatId: 3, chatName: 'Chat 3'},
+    {Id: 'chat1', Name: 'Chat 1'},
+    {Id: 'chat2', Name: 'Chat 2'},
+    {Id: 'chat3', Name: 'Chat 3'},
 ];
 
 export class ChatList extends React.Component {
@@ -12,7 +13,10 @@ export class ChatList extends React.Component {
         return(
             <div className="chat-list"><h2>Chat list</h2>
             <List>
-                {chats.map(chat => <ListItem key={chat.chatId}>{chat.chatName}</ListItem>)}
+                {chats.map(chat => 
+                    <ListItem key={chat.Id}>
+                        <Link to={`chats/${chat.Id}`}>{chat.Name}</Link>
+                    </ListItem>)}
             </List>
                 
             </div>

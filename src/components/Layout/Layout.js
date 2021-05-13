@@ -2,23 +2,21 @@ import React from "react";
 import { Header } from '../Header/Header';
 import { MessageField } from '../MessageField/MessageField';
 import { ChatList } from '../ChatList/ChatList';
-import { AUTHORS } from '../../utils/constants';
+import { useParams } from 'react-router-dom';
 
-const sourceMessages = [
-    { text: 'Hello!', author: AUTHORS.USER },
-    { text: 'How are you?', author: AUTHORS.ROBOT }
-];
-
-export class Layout extends React.Component {
-    render () {
-        return (
+export const Layout = () => {
+    const params = useParams();
+    console.log('layout params: ', params);
+    const { chatId } = params;
+    console.log('layout chatId: ', chatId);
+    return (
             <div className="layout">
                 <Header/>
                 <div className="layout-content">
+                    
                     <ChatList className="chat-list"/>
-                    <MessageField messages={sourceMessages} className="message-field"/>
+                    {chatId && <MessageField chatIdProp={chatId} className="message-field"/>}
                 </div>
             </div>
-        )
-    }
+    )
 }

@@ -1,4 +1,4 @@
-import React, { useState, eseEffect, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { AUTHORS } from '../../utils/constants';
 import { TextField, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
