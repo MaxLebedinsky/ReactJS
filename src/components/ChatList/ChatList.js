@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { List, ListItem, TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import {useSelector, useDispatch } from 'react-redux';
+import { addChat } from "../../store/chats/actions";
 
-// export const chatList = [
-//     {Id: 'chat1', Name: 'Chat #1'},
-//     {Id: 'chat2', Name: 'Chat #2'},
-//     {Id: 'chat3', Name: 'Chat #3'},
-// ];
-
-export const ChatList = ({ chats, onAddChat }) => {
+export const ChatList = () => {
+    const chats = useSelector(state => state.chats.chatList);
+    const dispatch = useDispatch();
     const [value, setValue] = useState('');
 
     const handleChange = (event) => {
@@ -17,7 +15,7 @@ export const ChatList = ({ chats, onAddChat }) => {
 
     const handleAddChat = () => {
         if (value) {
-            onAddChat({ Name: value, Id: String(Date.now()) });
+            dispatch(addChat({ Name: value, Id: String(Date.now()) }));
         };
         setValue('');
     };

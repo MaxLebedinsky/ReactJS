@@ -4,12 +4,18 @@ import { AUTHORS, ROBOT_MESSSAGE } from "../../utils/constants";
 import { Form } from "../Form/Form";
 import { ChatList } from '../ChatList/ChatList';
 import { useParams, Redirect } from 'react-router-dom';
+import {useSelector, useDispatch } from 'react-redux';
 import '../../styles/styles.css';
+import { addMessage } from "../../store/messages/actions";
 
-export const MessageField = ({ messages, onAddMessage, chats, onAddChat }) => {
-
+export const MessageField = () => {
+    const messages = useSelector(state => state.messages.messagesList);
+    const chats = useSelector(state => state.chats.chatList);
+    const dispatch = useDispatch();
     const params = useParams();
     const { chatId } = params;
+
+    console.log(chats);
 
     if (!chatId || !messages[chatId]) {
         return <Redirect to="/" />;
@@ -17,9 +23,9 @@ export const MessageField = ({ messages, onAddMessage, chats, onAddChat }) => {
 
     const handleAddMessage = useCallback(
         (newMessage) => {
-            onAddMessage(newMessage, chatId);
+            dispatch(addMessage(newMessage, chatId));
         },
-        [chatId, onAddMessage]
+        [chatId, dispatch]
     );
 
     useEffect( () => {
@@ -34,7 +40,7 @@ export const MessageField = ({ messages, onAddMessage, chats, onAddChat }) => {
 
     return (
         <div className="message-field">
-            <ChatList chats={chats} onAddChat={onAddChat}/>
+            <ChatList />
             <div className="message-field-messages">
                 <div>{chatName}</div>
                 {messages[chatId].map((mess, index) => <Message key={index} messageProp={mess}/>)}
