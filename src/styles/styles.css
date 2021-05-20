@@ -1,5 +1,6 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(1, 85, 85);
 }
 
 h2, h3 {
@@ -9,6 +10,11 @@ h2, h3 {
 }
 
 .message-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-field-messages {
     width: 70%;
     background-color: #e0f2f1;
     display: flex;
@@ -42,9 +48,6 @@ h2, h3 {
 .layout {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.layout-content {
     display: flex;
     justify-content: space-between;
 }
@@ -89,7 +92,9 @@ h2, h3 {
 }
 
 .header {
-    width: 100%;
+    /* width: 100%; */
+    max-width: 1200px;
+    margin: 0 auto;
     height: 60px;
     padding: 0 20px;
     background-color: #b2dfdb;
@@ -110,8 +115,21 @@ h2, h3 {
 }
 
 .profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     margin-top: 20px;
+}
+
+.profile input {
+    display: block;
+}
+
+.profile span {
+    color: teal;
+    font-weight: bold;
 }
 
 

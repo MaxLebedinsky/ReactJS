@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Profile } from '../Profile/Profile';
-import { Layout } from '../Layout/Layout';
+import { MessageField } from '../MessageField/MessageField';
+import { Header } from '../Header/Header';
 import { ChatList } from '../ChatList/ChatList';
+import { AUTHORS, ROBOT_MESSSAGE } from "../../utils/constants";
 
 export const Routes = () => {
     return (
         <BrowserRouter>
+            <Header/>
             <Switch>
                 <Route exact path="/">
-                    <Layout/>
+                    <ChatList />
                 </Route>
-                <Route exact path="/chats/">
-                    <Layout/>
-                </Route>
-                <Route path="/chats/:chatId">
-                    <Layout/>
+                <Route path="/chats/:chatId?">
+                    <MessageField />
                 </Route>
                 <Route exact path="/profile">
-                    <Profile/>
+                    <Profile />
+                </Route>
+                <Route path="*">
+                    <div>Page 404</div>
                 </Route>
             </Switch>
         </BrowserRouter>

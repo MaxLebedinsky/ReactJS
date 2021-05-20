@@ -2,51 +2,50 @@ import React, { useEffect, useState, useCallback }  from "react";
 import { Message } from "../Message/Message";
 import { AUTHORS, ROBOT_MESSSAGE } from "../../utils/constants";
 import { Form } from "../Form/Form";
+import { ChatList } from '../ChatList/ChatList';
+import { useParams, Redirect } from 'react-router-dom';
+import {useSelector, useDispatch } from 'react-redux';
 import '../../styles/styles.css';
+import { addMessage } from "../../store/messages/actions";
 
-const sourceMessages = {
-    chat1: [{ text: 'Hello!', author: AUTHORS.USER },
-    { text: 'How are you?', author: AUTHORS.ROBOT }
-    ],
-    chat2: [{ text: 'Aloha!', author: AUTHORS.USER },
-    { text: 'Namaste!', author: AUTHORS.ROBOT }
-    ],
-    chat3: [{ text: 'Hola!', author: AUTHORS.USER },
-    { text: 'Hola mi Jefe!', author: AUTHORS.ROBOT }
-    ],
-}
+export const MessageField = () => {
+    const messages = useSelector(state => state.messages.messagesList);
+    const chats = useSelector(state => state.chats.chatList);
+    const dispatch = useDispatch();
+    const params = useParams();
+    const { chatId } = params;
 
-export const MessageField = (props) => {
-    const [messages, setMessages] = useState(sourceMessages);
-    const chatId = props.chatIdProp;
+    console.log(chats);
 
-    const handleAddMessage = useCallback (
+    if (!chatId || !messages[chatId]) {
+        return <Redirect to="/" />;
+      }
+
+    const handleAddMessage = useCallback(
         (newMessage) => {
-    // если сообщение не пустое, добавляем его в чат
-                        if (newMessage.text.length) {
-                            setMessages((prevMessages) => ({
-                                ...prevMessages, 
-                                [chatId]:[...prevMessages[chatId], newMessage],
-                                }))
-                            }
-            },
-            [chatId]
+            dispatch(addMessage(newMessage, chatId));
+        },
+        [chatId, dispatch]
     );
 
     useEffect( () => {
-        const lastMessage = messages[chatId][messages[chatId].length - 1];
+        const lastMessage = messages[chatId]?.[messages[chatId]?.length - 1];
 
-        if (lastMessage.author === AUTHORS.USER) {
+        if (lastMessage?.author === AUTHORS.USER) {
             handleAddMessage({author: AUTHORS.ROBOT, text: ROBOT_MESSSAGE});
         }
-
     }, [messages]);
+
+    const chatName = chats.find(chat => chat.Id === chatId)?.Name
 
     return (
         <div className="message-field">
-            <h3>{props.chatNameProp}</h3>
-            {messages[chatId].map((mess, index) => <Message key={index} messageProp={mess}/>)}
-            <Form onAddMessage={handleAddMessage}/>
+            <ChatList />
+            <div className="message-field-messages">
+                <div>{chatName}</div>
+                {messages[chatId].map((mess, index) => <Message key={index} messageProp={mess}/>)}
+                <Form onAddMessage={handleAddMessage}/>
+            </div>
         </div>
     );
 }
