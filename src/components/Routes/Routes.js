@@ -4,26 +4,28 @@ import { Profile } from '../Profile/Profile';
 import { MessageField } from '../MessageField/MessageField';
 import { Header } from '../Header/Header';
 import { ChatList } from '../ChatList/ChatList';
-import { AUTHORS, ROBOT_MESSSAGE } from "../../utils/constants";
+import { AUTHORS, ROBOT_MESSAGE } from "../../utils/constants";
 
 export const Routes = () => {
     return (
         <BrowserRouter>
             <Header/>
-            <Switch>
-                <Route exact path="/">
-                    <ChatList />
-                </Route>
-                <Route path="/chats/:chatId?">
-                    <MessageField />
-                </Route>
-                <Route exact path="/profile">
-                    <Profile />
-                </Route>
-                <Route path="*">
-                    <div>Page 404</div>
-                </Route>
-            </Switch>
+            <div className="layout">
+                <Switch>
+                    <Route exact path="/">
+                        <ChatList />
+                    </Route>
+                    <Route path="/chats/:chatId?">
+                        <MessageField />
+                    </Route>
+                    <Route exact path="/profile">
+                        <Profile />
+                    </Route>
+                    <Route path="*">
+                        <div>Page 404</div>
+                    </Route>
+                </Switch>
+            </div>
         </BrowserRouter>
     )
 }

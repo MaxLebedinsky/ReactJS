@@ -1,7 +1,6 @@
-import { CHANGE_CHECKBOX, CHANGE_NAME } from "./actions"
+import { CHANGE_NAME } from "./actions"
 
 const initialState = {
-    checked: false,
     name: '',
 }
 

@@ -3,4 +3,4 @@ export const AUTHORS = {
     ROBOT: 'robot'
 };
 
-export const ROBOT_MESSSAGE = "Robot's answer";
+export const ROBOT_MESSAGE = "Robot's answer";
