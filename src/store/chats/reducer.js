@@ -1,3 +1,4 @@
+import { ADD_MESSAGE } from '../messages/actions';
 import { ADD_CHAT } from './actions';
 
 const sourceChats = [
@@ -7,10 +8,12 @@ const sourceChats = [
 ];
 
 const initialState = {
-    chatList: [...sourceChats]
+    chatList: [...sourceChats],
+    unreadChatId: '',
 }
 
 export const chatsReducer = (state = initialState, action) => {
+    // console.log('message added to chat: ', action.payload?.chatId)
     switch (action.type) {
         case ADD_CHAT: {
             return {
@@ -18,6 +21,13 @@ export const chatsReducer = (state = initialState, action) => {
                 chatList: [
                     ...state.chatList, action.payload
                 ]
+            }
+        }
+
+        case ADD_MESSAGE: {
+            return {
+                ...state,
+                unreadChatId: action.payload.chatId
             }
         }
         default: return state

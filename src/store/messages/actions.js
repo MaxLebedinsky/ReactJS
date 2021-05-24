@@ -1,13 +1,12 @@
 import { AUTHORS, ROBOT_MESSAGE } from "../../utils/constants";
 
-
 export const ADD_MESSAGE = 'MESSAGES::ADD_MESSAGE';
 
 export const addMessage = (newMessage, chatId) => ({
     type: ADD_MESSAGE,
     payload: {
         message: newMessage,
-        chatId,
+        chatId
     },
 });
 

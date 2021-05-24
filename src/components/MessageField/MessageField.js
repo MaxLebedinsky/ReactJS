@@ -15,8 +15,6 @@ export const MessageField = () => {
     const params = useParams();
     const { chatId } = params;
 
-    console.log(chats);
-
     if (!chatId || !messages[chatId]) {
         return <Redirect to="/" />;
       }
@@ -27,14 +25,6 @@ export const MessageField = () => {
         },
         [chatId, dispatch]
     );
-
-    // useEffect( () => {
-    //     const lastMessage = messages[chatId]?.[messages[chatId]?.length - 1];
-
-    //     if (lastMessage?.author === AUTHORS.USER) {
-    //         handleAddMessage({author: AUTHORS.ROBOT, text: ROBOT_MESSAGE});
-    //     }
-    // }, [messages]);
 
     const chatName = chats.find(chat => chat.Id === chatId)?.Name
 
