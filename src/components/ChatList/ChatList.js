@@ -10,7 +10,6 @@ export const ChatList = () => {
     const dispatch = useDispatch();
     const [value, setValue] = useState('');
     const unreadChatId = useSelector(state => state.chats.unreadChatId);
-    const [unreadClass, setUnreadClass] = useState('unread');
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -22,17 +21,10 @@ export const ChatList = () => {
         };
         setValue('');
     };
-
-    useEffect(() => {
-        // console.log('unreadChatId: ', unreadChatId);
-        if (!unreadClass) {
-            setUnreadClass('unread');
-        }
-        setTimeout(() => {
-            setUnreadClass('');
-        }, 3000);
-    }, [messages]);
-
+    // если unreadChatId не сброшен, задаём имя добавляемого класса как 'unread' 
+    const unreadClass = (unreadChatId) ? 'unread' : '';
+    console.log('unreadClass: ', unreadClass)
+    
     return(
         <div className="chat-list">
             <h2>Chat list</h2>

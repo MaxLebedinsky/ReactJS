@@ -1,5 +1,5 @@
 import { AUTHORS } from '../../utils/constants';
-import { ADD_MESSAGE } from '../messages/actions';
+import { ADD_MESSAGE, RESET_UNREAD_CHAT_ID } from '../messages/actions';
 import { ADD_CHAT } from './actions';
 
 const sourceChats = [
@@ -32,6 +32,14 @@ export const chatsReducer = (state = initialState, action) => {
                 ...state,
                 unreadChatId: action.payload.message.author === AUTHORS.ROBOT ? action.payload.chatId : ''
             }
+        }
+        // сбрасываем unreadChatId с задержкой 2 сек, чтобы убрать подсветку
+        case RESET_UNREAD_CHAT_ID: {
+                console.log('unreadChatId resetting...');
+                return {
+                    ...state,
+                    unreadChatId: ''
+                }
         }
         default: return state
     }
