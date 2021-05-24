@@ -6,6 +6,7 @@ import { addChat } from "../../store/chats/actions";
 
 export const ChatList = () => {
     const chats = useSelector(state => state.chats.chatList);
+    const messages = useSelector(state => state.messages.messagesList);
     const dispatch = useDispatch();
     const [value, setValue] = useState('');
     const unreadChatId = useSelector(state => state.chats.unreadChatId);
@@ -23,10 +24,14 @@ export const ChatList = () => {
     };
 
     useEffect(() => {
+        // console.log('unreadChatId: ', unreadChatId);
+        if (!unreadClass) {
+            setUnreadClass('unread');
+        }
         setTimeout(() => {
             setUnreadClass('');
-        }, 2000);
-    }, [unreadClass]);
+        }, 3000);
+    }, [messages]);
 
     return(
         <div className="chat-list">

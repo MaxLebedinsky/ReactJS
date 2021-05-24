@@ -1,3 +1,4 @@
+import { AUTHORS } from '../../utils/constants';
 import { ADD_MESSAGE } from '../messages/actions';
 import { ADD_CHAT } from './actions';
 
@@ -7,13 +8,14 @@ const sourceChats = [
     {Id: 'chat3', Name: 'Chat #3'},
 ];
 
+// добавляем к стейту чатов переменную для id чата с новым сообщением от робота
+// этот чат при рендере компонента ChatList будем подсвечивать
 const initialState = {
     chatList: [...sourceChats],
     unreadChatId: '',
 }
 
 export const chatsReducer = (state = initialState, action) => {
-    // console.log('message added to chat: ', action.payload?.chatId)
     switch (action.type) {
         case ADD_CHAT: {
             return {
@@ -23,11 +25,12 @@ export const chatsReducer = (state = initialState, action) => {
                 ]
             }
         }
-
+        // если автор добавляемого сообщения – робот, то в id чата для подсветки 
+        // записываем chatId из action.payload
         case ADD_MESSAGE: {
             return {
                 ...state,
-                unreadChatId: action.payload.chatId
+                unreadChatId: action.payload.message.author === AUTHORS.ROBOT ? action.payload.chatId : ''
             }
         }
         default: return state

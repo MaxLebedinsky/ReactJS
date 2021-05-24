@@ -16,6 +16,6 @@ export const addMessageWithThunk = (newMessage, chatId) => (dispatch, getState) 
     if (newMessage.author !== AUTHORS.ROBOT) {
         setTimeout(() => {
             dispatch(addMessage({ text: ROBOT_MESSAGE, author: AUTHORS.ROBOT }, chatId));
-        }, 1000);
+        }, 2000);
     }
 };
