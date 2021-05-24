@@ -26,14 +26,7 @@ export const ChatList = () => {
         setTimeout(() => {
             setUnreadClass('');
         }, 2000);
-    }, []);
-
-    console.log(unreadChatId);
-    if (unreadClass) {
-        setTimeout(() => {
-            setUnreadClass('');
-        }, 2000);
-    }
+    }, [unreadClass]);
 
     return(
         <div className="chat-list">
