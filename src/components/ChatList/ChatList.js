@@ -1,25 +1,45 @@
-import React from "react";
-import { List, ListItem } from '@material-ui/core';
+import React, { useEffect, useState } from "react";
+import { List, ListItem, TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import {useSelector, useDispatch } from 'react-redux';
+import { addChat } from "../../store/chats/actions";
 
-export const chats = [
-    {Id: 'chat1', Name: 'Chat #1'},
-    {Id: 'chat2', Name: 'Chat #2'},
-    {Id: 'chat3', Name: 'Chat #3'},
-];
+export const ChatList = () => {
+    const chats = useSelector(state => state.chats.chatList);
+    const messages = useSelector(state => state.messages.messagesList);
+    const dispatch = useDispatch();
+    const [value, setValue] = useState('');
+    const unreadChatId = useSelector(state => state.chats.unreadChatId);
 
-export class ChatList extends React.Component {
-    render() {
-        return(
-            <div className="chat-list"><h2>Chat list</h2>
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
+    const handleAddChat = () => {
+        if (value) {
+            dispatch(addChat({ Name: value, Id: String(Date.now()) }));
+        };
+        setValue('');
+    };
+    // если unreadChatId не сброшен, задаём имя добавляемого класса как 'unread' 
+    const unreadClass = (unreadChatId) ? 'unread' : '';
+    console.log('unreadClass: ', unreadClass)
+    
+    return(
+        <div className="chat-list">
+            <h2>Chat list</h2>
             <List>
-                {chats.map(chat => 
+                {chats.map((chat) => (
                     <ListItem key={chat.Id}>
-                        <Link to={`/chats/${chat.Id}`} className="chat-list-link">{chat.Name}</Link>
-                    </ListItem>)}
+                        <Link to={`/chats/${chat.Id}`} 
+                        className={`chat-list-link ${unreadChatId === chat.Id ? unreadClass : ''}`}>
+                            {chat.Name}
+                        </Link>
+                    </ListItem>
+                ))}
             </List>
-                
-            </div>
-        )
-    }
+            <TextField value={value} onChange={handleChange}/>
+            <Button onClick={handleAddChat}>Add Chat</Button>
+        </div>
+    );
 }
