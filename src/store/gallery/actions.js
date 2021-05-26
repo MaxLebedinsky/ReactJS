@@ -12,7 +12,7 @@ export const galleryRequest = () => ({
 
 export const gallerySuccess = (gallery) => ({
     type: GALLERY_SUCCESS,
-    gallery
+    gallery: [gallery]
 });
 
 export const galleryFailure = (error) => ({
@@ -26,7 +26,6 @@ export const addGalleryItem = (currentGallery) => ({
 });
 
 // THUNK
-const currentGallery = [];
 export const getGallery = (itemId) => (dispatch) => {
     dispatch(galleryRequest());
 
@@ -38,9 +37,7 @@ export const getGallery = (itemId) => (dispatch) => {
             return response.json();
         })
         .then(data => {
-            currentGallery.push(data);
-            console.log('data: ', data)
-            dispatch(gallerySuccess(currentGallery));
+            dispatch(gallerySuccess(data));
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))
