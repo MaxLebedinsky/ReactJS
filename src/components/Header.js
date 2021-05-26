@@ -10,6 +10,7 @@ export const Header = () => {
                      <div className="header-left">
                         <Link to="/" className="header-link">Home</Link>
                         <Link to="/articles" className="header-link">Articles</Link>
+                        <Link to="/gallery" className="header-link">Gallery</Link>
 
                     </div>
                     <div className="header-right">

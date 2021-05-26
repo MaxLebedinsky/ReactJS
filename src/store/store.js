@@ -5,6 +5,8 @@ import { messagesReducer } from './messages/reducer';
 import { profileReducer } from './profile/reducer';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { articlesReducer } from './articles/reducer';
+import { galleryReducer } from './gallery/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -18,6 +20,8 @@ const persistedReducer = persistReducer(persistConfig,
         chats: chatsReducer,
         messages: messagesReducer,
         profile: profileReducer,
+        articles: articlesReducer,
+        gallery: galleryReducer,
     }));
 
 export const store = createStore(

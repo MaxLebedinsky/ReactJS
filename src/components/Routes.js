@@ -5,6 +5,7 @@ import { MessageField } from './MessageField';
 import { Header } from './Header';
 import { ChatList } from './ChatList';
 import { Articles } from './Articles';
+import { Gallery } from './Gallery';
 
 export const Routes = () => {
     return (
@@ -23,6 +24,9 @@ export const Routes = () => {
                     </Route>
                     <Route exact path="/articles">
                         <Articles />
+                    </Route>
+                    <Route exact path="/gallery">
+                        <Gallery />
                     </Route>
                     <Route path="*">
                         <div>Page 404</div>

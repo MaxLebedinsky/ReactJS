@@ -1,37 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { API_URL } from '../utils/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { getArticles } from '../store/articles/actions';
+import { API_URL, REQUEST_STATUS } from '../utils/constants';
 
 export const Articles = () => {
-    const [articles, setArticles] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const articles = useSelector(state => state.articles.articlesList);
+    const articlesStatus = useSelector(state => state.articles.request.status);
+    const articlesError = useSelector(state => state.articles.request.error);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        setLoading(true);
-        fetch(API_URL)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("request failed with status: " + response.status);
-            }
-            console.log('response: ', response);
-            return response.json();
-        })
-        .then(data => {
-            // console.log(data);
-            setArticles(data);
-        })
-        .catch((err) => {
-            setError(err.message);
-        })
-        .finally(() => setLoading(false));
+        dispatch(getArticles());
     }, []);
+
     console.log('articles: ', articles);
 
-    if (loading) {
+    if (articlesStatus === REQUEST_STATUS.PENDING) {
         return <h3>Loading...</h3>
     }
 
-    if (error) {
-        return <h3>Error: {error}</h3>
+    if (articlesError) {
+        return <h3>Error: {articlesError}</h3>
     }
     return (
         <div className="articles">
