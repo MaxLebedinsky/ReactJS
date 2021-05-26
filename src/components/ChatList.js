@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { List, ListItem, TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
-import { addChat } from "../../store/chats/actions";
+import { addChat } from "../store/chats/actions";
 
 export const ChatList = () => {
     const chats = useSelector(state => state.chats.chatList);

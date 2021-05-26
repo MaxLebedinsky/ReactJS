@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback }  from "react";
-import { Message } from "../Message/Message";
-import { AUTHORS, ROBOT_MESSAGE } from "../../utils/constants";
-import { Form } from "../Form/Form";
-import { ChatList } from '../ChatList/ChatList';
+import { Message } from "./Message";
+import { AUTHORS, ROBOT_MESSAGE } from "../utils/constants";
+import { Form } from "./Form";
+import { ChatList } from './ChatList';
 import { useParams, Redirect } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
-import '../../styles/styles.css';
-import { addMessage, addMessageWithThunk } from "../../store/messages/actions";
+import '../styles/styles.css';
+import { addMessage, addMessageWithThunk } from "../store/messages/actions";
 
 export const MessageField = () => {
     const messages = useSelector(state => state.messages.messagesList);

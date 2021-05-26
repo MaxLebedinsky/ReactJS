@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AUTHORS } from '../../utils/constants';
+import { AUTHORS } from '../utils/constants';
 import { TextField, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';

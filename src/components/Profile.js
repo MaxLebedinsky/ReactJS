@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { changeName } from '../../store/profile/actions';
+import { changeName } from '../store/profile/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const Profile = () => {

@@ -110,11 +110,16 @@ h2, h3 {
     box-sizing: border-box;
 }
 
+header-left, header-right {
+    display: flex;
+}
+
 .header-link {
-    display: block;
+    display: inline-block;
     text-decoration: none;
     color: teal;
     font-weight: bold;
+    margin: 0 30px;
 }
 
 .profile {
@@ -138,4 +143,9 @@ h2, h3 {
 .unread {
     color: white;
     background-color: teal;
+}
+
+.articles {
+    display: flex;
+    flex-direction: column;
 }

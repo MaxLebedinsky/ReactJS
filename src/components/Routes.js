@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Profile } from '../Profile/Profile';
-import { MessageField } from '../MessageField/MessageField';
-import { Header } from '../Header/Header';
-import { ChatList } from '../ChatList/ChatList';
-import { AUTHORS, ROBOT_MESSAGE } from "../../utils/constants";
+import { Profile } from './Profile';
+import { MessageField } from './MessageField';
+import { Header } from './Header';
+import { ChatList } from './ChatList';
+import { Articles } from './Articles';
 
 export const Routes = () => {
     return (
@@ -20,6 +20,9 @@ export const Routes = () => {
                     </Route>
                     <Route exact path="/profile">
                         <Profile />
+                    </Route>
+                    <Route exact path="/articles">
+                        <Articles />
                     </Route>
                     <Route path="*">
                         <div>Page 404</div>
