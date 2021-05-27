@@ -33,7 +33,6 @@ export const getArticles = () => (dispatch) => {
             dispatch(articlesSuccess(data));
         })
         .catch((err) => {
-            // setError(err.message);
             dispatch(articlesFailure(err.message))
         });
 }

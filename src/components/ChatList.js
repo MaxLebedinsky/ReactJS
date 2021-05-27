@@ -23,7 +23,6 @@ export const ChatList = () => {
     };
     // если unreadChatId не сброшен, задаём имя добавляемого класса как 'unread' 
     const unreadClass = (unreadChatId) ? 'unread' : '';
-    console.log('unreadClass: ', unreadClass)
     
     return(
         <div className="chat-list">

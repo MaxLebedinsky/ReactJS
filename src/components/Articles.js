@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArticles } from '../store/articles/actions';
-import { API_URL, REQUEST_STATUS } from '../utils/constants';
+import { REQUEST_STATUS } from '../utils/constants';
 
 export const Articles = () => {
     const articles = useSelector(state => state.articles.articlesList);
