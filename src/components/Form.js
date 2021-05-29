@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AUTHORS } from '../utils/constants';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, makeStyles } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
+import { withTheme } from '@material-ui/styles';
+// import { TextField, Button, Icon, makeStyles } from '@material-ui/core';
 
 const theme = createMuiTheme({
     palette: {
@@ -11,7 +13,14 @@ const theme = createMuiTheme({
     },
   });
 
+const useStyles = makeStyles(() => ({
+    textField: {
+        backgroundColor: 'white',
+    }
+}));
+
 export const Form = ({ onAddMessage }) => {
+    const classes = useStyles();
     const [text, setText] = useState('');
     const input = useRef();
 
@@ -41,16 +50,18 @@ export const Form = ({ onAddMessage }) => {
                     label="type your message"
                     inputRef={input}
                     variant="outlined"
+                    className={classes.textField}
                 />
                 <br/>
                 <Button 
-                endIcon={<SendIcon/>} 
-                type="submit" 
-                variant="contained" 
-                color="primary"
-                size="small"
-                fullWidth={false}>
-                    Send</Button>
+                    endIcon={<SendIcon/>} 
+                    type="submit" 
+                    variant="contained" 
+                    color="primary"
+                    size="small"
+                    fullWidth={false}>
+                    Send
+                </Button>
             </ThemeProvider>
         </form>
     );

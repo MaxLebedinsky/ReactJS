@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, TextField, Button } from '@material-ui/core';
+import { List, ListItem, TextField, Button, makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
 import { addChat } from "../store/chats/actions";
 
+const useStyles = makeStyles(() => ({
+    textField: {
+        backgroundColor: 'white',
+        marginTop: '15px',
+        // paddingTop: '20px',
+    },
+    button : {
+        marginTop: '20px',
+    },
+}));
+
 export const ChatList = () => {
+    const classes = useStyles();
     const chats = useSelector(state => state.chats.chatList);
     const messages = useSelector(state => state.messages.messagesList);
     const dispatch = useDispatch();
@@ -26,7 +38,7 @@ export const ChatList = () => {
     
     return(
         <div className="chat-list">
-            <h2>Chat list</h2>
+            <h3>Chat list</h3>
             <List>
                 {chats.map((chat) => (
                     <ListItem key={chat.Id}>
@@ -37,8 +49,30 @@ export const ChatList = () => {
                     </ListItem>
                 ))}
             </List>
-            <TextField value={value} onChange={handleChange}/>
-            <Button onClick={handleAddChat}>Add Chat</Button>
+            {/* <TextField value={value} onChange={handleChange}/> */}
+            <TextField
+                    // id="standard-multiline-flexible"
+                    multiline
+                    value={value}
+                    onChange={handleChange}
+                    label="new chat name"
+                    variant="outlined"
+                    size="small"
+                    className={classes.textField}
+                />
+            <Button 
+                onClick={handleAddChat}
+                    // endIcon={<SendIcon/>} 
+                    type="submit" 
+                    variant="contained" 
+                    color="primary"
+                    size="small"
+                    fullWidth={false}
+                    className={classes.button}>
+                    Add chat
+            </Button>
+            {/* <Button onClick={handleAddChat}>Add Chat</Button> */}
         </div>
     );
 }
+

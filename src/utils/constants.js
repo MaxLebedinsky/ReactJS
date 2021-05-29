@@ -15,6 +15,8 @@ export const API_URL_GALLERY = "https://collectionapi.metmuseum.org/public/colle
 
 export const PAINTS_IDS = [459110,438815,459112,437432,438011,438014,437430,459111,438012,437429,438013,437434,441104,438010,437428,437437];
 
+// export const PAINTS_IDS = [459110,438815,459112,437432,438011];
+
 export const REQUEST_STATUS = {
     IDLE: 0,
     PENDING: 1,
