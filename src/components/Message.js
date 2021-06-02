@@ -1,6 +1,6 @@
 import React from "react";
-import { AUTHORS } from '../../utils/constants';
-import '../../styles/styles.css';
+import { AUTHORS } from '../utils/constants';
+import '../styles/styles.css';
 
 export class Message extends React.Component {
 
