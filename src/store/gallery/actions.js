@@ -14,10 +14,6 @@ export const gallerySuccess = (gallery) => ({
     gallery: gallery
 });
 
-export const setCurrentGallery = (currentGallery) => ({
-    type: GALLERY_SET_CURRENT_GALLERY,
-    currentGallery,
-})
 
 export const galleryFailure = (error) => ({
     type: GALLERY_FAILURE,
@@ -25,7 +21,7 @@ export const galleryFailure = (error) => ({
 });
 
 // THUNK
-export const getGallery = (itemId, currentGallery) => (dispatch) => {
+export const getGallery = (itemId) => (dispatch) => {
     dispatch(galleryRequest());
 
     fetch(`${API_URL_GALLERY}${itemId}`)
@@ -36,11 +32,9 @@ export const getGallery = (itemId, currentGallery) => (dispatch) => {
             return response.json();
         })
         .then(data => {
-            currentGallery.push(data);
-            // console.log('currentGallery from fetch: ', currentGallery);
-            dispatch(setCurrentGallery(currentGallery));
-            // console.log('data from fetch: ', data)
             dispatch(gallerySuccess(data));
+            console.log(data);
+            debugger;
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))
