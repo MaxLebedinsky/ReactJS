@@ -4,7 +4,7 @@ import { getGallery } from '../store/gallery/actions';
 import { PAINTS_IDS, REQUEST_STATUS } from '../utils/constants';
 
 export const Gallery = () => {
-    const galleryItem = useSelector(state => state.gallery.galleryItem);
+    // const galleryItem = useSelector(state => state.gallery.galleryItem);
     let currentGallery = useSelector(state => state.gallery.currentGallery);
     const galleryStatus = useSelector(state => state.gallery.request.status);
     const galleryError = useSelector(state => state.gallery.request.error);
@@ -26,7 +26,7 @@ export const Gallery = () => {
         return <h3>Error: {galleryError}</h3>
     }
 
-    // console.log('currentGallery before render: ', currentGallery);
+    console.log('currentGallery before render: ', currentGallery);
 
     return (
         <div className="gallery">  

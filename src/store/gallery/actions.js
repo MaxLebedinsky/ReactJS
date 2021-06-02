@@ -9,15 +9,15 @@ export const galleryRequest = () => ({
     type: GALLERY_REQUEST
 });
 
-export const gallerySuccess = (gallery) => ({
+export const gallerySuccess = (currentGallery) => ({
     type: GALLERY_SUCCESS,
-    gallery: gallery
+    currentGallery,
 });
 
-export const setCurrentGallery = (currentGallery) => ({
-    type: GALLERY_SET_CURRENT_GALLERY,
-    currentGallery,
-})
+// export const setCurrentGallery = (currentGallery) => ({
+//     type: GALLERY_SET_CURRENT_GALLERY,
+//     currentGallery,
+// })
 
 export const galleryFailure = (error) => ({
     type: GALLERY_FAILURE,
@@ -37,10 +37,10 @@ export const getGallery = (itemId, currentGallery) => (dispatch) => {
         })
         .then(data => {
             currentGallery.push(data);
-            // console.log('currentGallery from fetch: ', currentGallery);
-            dispatch(setCurrentGallery(currentGallery));
+            // dispatch(setCurrentGallery(currentGallery));
             // console.log('data from fetch: ', data)
-            dispatch(gallerySuccess(data));
+            // console.log('currentGallery from fetch: ', currentGallery);
+            dispatch(gallerySuccess(currentGallery));
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))
