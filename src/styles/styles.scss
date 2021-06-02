@@ -1,9 +1,16 @@
-$primary: #1D7778;
-$primary-light: #288688;
+$primary: #235A5F;
+$primary-light: #41757A;
 $dark: #C06421;
 $shades: #382E20;
 $light: #F7F6F5;
 $accent: #C99B2A;
+
+// $primary: #1D7778;
+// $primary-light: #288688;
+// $dark: #C06421;
+// $shades: #382E20;
+// $light: #F7F6F5;
+// $accent: #C99B2A;
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -132,6 +139,11 @@ h4 {
 
 .header-right {
     margin-right: 40px;
+}
+
+.header-right span {
+    color: $light;
+    font-size: 0.8em;
 }
 
 .header-link {

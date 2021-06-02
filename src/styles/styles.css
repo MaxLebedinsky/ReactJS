@@ -70,7 +70,7 @@ h4 {
 }
 
 .chat-list h3 {
-  color: #1D7778;
+  color: #235A5F;
 }
 
 .chat-list-link {
@@ -141,7 +141,7 @@ h4 {
   /* width: 100%; */
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #1D7778;
+  background-color: #235A5F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,6 +166,11 @@ h4 {
   margin-right: 40px;
 }
 
+.header-right span {
+  color: #F7F6F5;
+  font-size: 0.8em;
+}
+
 .header-link {
   display: inline-block;
   padding: 10px 20px;
@@ -174,7 +179,7 @@ h4 {
 }
 
 .header-link:hover {
-  background-color: #288688;
+  background-color: #41757A;
 }
 
 .profile {

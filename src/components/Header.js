@@ -11,11 +11,12 @@ export const Header = () => {
                         <Link to="/" className="header-link">Home</Link>
                         <Link to="/articles" className="header-link">Articles</Link>
                         <Link to="/gallery" className="header-link">Gallery</Link>
+                        <Link to="/chat" className="header-link">Firebase from Lesson 8</Link>
 
                     </div>
                     <div className="header-right">
                         {/* Если есть имя или фамилия, выводим приветствие */}
-                        {(name || surname) && <span>Hello, {name} {surname}!</span>}
+                        {(name || surname) && <span>Hello, {name} {surname}! </span>}
                         <Link to="/profile" className="header-link">Profile</Link>
                     </div>
                  </div>
