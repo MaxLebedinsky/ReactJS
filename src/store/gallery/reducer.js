@@ -1,8 +1,8 @@
 import { REQUEST_STATUS } from "../../utils/constants";
-import { GALLERY_REQUEST, GALLERY_SUCCESS, GALLERY_FAILURE, GALLERY_SET_CURRENT_GALLERY} from "./actions";
+import { GALLERY_REQUEST, GALLERY_SUCCESS, GALLERY_FAILURE, GALLERY_CLEAR} from "./actions";
 
 const initialState = {
-    gallery: {},
+    gallery: [],
     request: {
         status: REQUEST_STATUS.IDLE,
         error: '',
@@ -32,11 +32,18 @@ export const galleryReducer = (state = initialState, action) => {
         case GALLERY_SUCCESS: {
             return {
                 ...state,
-                gallery: action.gallery,
+                gallery: [...state.gallery, action.gallery],
                 request: {
                     status: REQUEST_STATUS.SUCCESS,
                     error: '',
                 }
+            }
+        }
+
+        case GALLERY_CLEAR: {
+            return {
+                ...state,
+                gallery: [],
             }
         }
         // case GALLERY_SET_CURRENT_GALLERY: {

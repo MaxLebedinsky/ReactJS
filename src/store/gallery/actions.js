@@ -3,7 +3,7 @@ import { API_URL_GALLERY } from "../../utils/constants";
 export const GALLERY_REQUEST = 'GALLERY::REQUEST';
 export const GALLERY_SUCCESS = 'GALLERY::SUCCESS';
 export const GALLERY_FAILURE = 'GALLERY::FAILURE';
-export const GALLERY_SET_CURRENT_GALLERY = 'GALLERY::SET_CURRENT_GALLERY'
+export const GALLERY_CLEAR = 'GALLERY::CLEAR';
 
 export const galleryRequest = () => ({
     type: GALLERY_REQUEST
@@ -20,6 +20,10 @@ export const galleryFailure = (error) => ({
     error,
 });
 
+export const clearGallery = () => ({
+    type: GALLERY_CLEAR
+})
+
 // THUNK
 export const getGallery = (itemId) => (dispatch) => {
     dispatch(galleryRequest());
@@ -34,7 +38,7 @@ export const getGallery = (itemId) => (dispatch) => {
         .then(data => {
             dispatch(gallerySuccess(data));
             console.log(data);
-            debugger;
+            // debugger;
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))

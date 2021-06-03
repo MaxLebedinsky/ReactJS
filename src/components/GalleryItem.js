@@ -4,32 +4,30 @@ import { getGallery } from '../store/gallery/actions';
 import { REQUEST_STATUS } from '../utils/constants';
 
 export const GalleryItem = (props) => {
-    const gallery = useSelector(state => state.gallery.gallery);
-    const galleryStatus = useSelector(state => state.gallery.request.status);
-    const galleryError = useSelector(state => state.gallery.request.error);
-    const dispatch = useDispatch();
+    // const gallery = useSelector(state => state.gallery.gallery);
+    // const galleryStatus = useSelector(state => state.gallery.request.status);
+    // const galleryError = useSelector(state => state.gallery.request.error);
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getGallery(props.itemId));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getGallery(props.itemId));
+    // }, []);
 
-    if (galleryStatus === REQUEST_STATUS.PENDING) {
-        return <h3>Loading...</h3>
-    }
+    // if (galleryStatus === REQUEST_STATUS.PENDING) {
+    //     return <h3>Loading...</h3>
+    // }
 
-    if (galleryError) {
-        return <h3>Error: {galleryError}</h3>
-    }
+    // if (galleryError) {
+    //     return <h3>Error: {galleryError}</h3>
+    // }
 
-    console.log('props.item before render: ', gallery);
+    // console.log('props.item before render: ', gallery);
 
-    return (
-        <div className="gallery-content">   
+    return (  
             <div className="gallery-item">
-                <img src={gallery.primaryImageSmall} alt={gallery.title} className="gallery-img"/>
-                <h4>{gallery.title}</h4>
-                <p>{gallery.artistDisplayName}, {gallery.objectEndDate}</p>
+                <img src={props.item.primaryImageSmall} alt={props.item.title} className="gallery-img"/>
+                <h4>{props.item.title}</h4>
+                <p>{props.item.artistDisplayName}, {props.item.objectEndDate}</p>
             </div> 
-        </div>
     )
 }
