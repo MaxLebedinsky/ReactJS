@@ -37,8 +37,7 @@ export const getGallery = (itemId) => (dispatch) => {
         })
         .then(data => {
             dispatch(gallerySuccess(data));
-            console.log(data);
-            // debugger;
+            // console.log(data);
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))

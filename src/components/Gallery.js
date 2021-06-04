@@ -11,14 +11,10 @@ export const Gallery = () => {
     const galleryError = useSelector(state => state.gallery.request.error);
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //         dispatch(getGallery());
-    // }, []);
     useEffect(() => {
         if (gallery.length) { dispatch(clearGallery()) }
         PAINTS_IDS.forEach( itemId => {
             dispatch(getGallery(itemId));
-            // debugger;
         });
     }, []);
 
@@ -30,7 +26,7 @@ export const Gallery = () => {
         return <h3>Error: {galleryError}</h3>
     }
 
-    console.log('gallery before render: ', gallery);
+    // console.log('gallery before render: ', gallery);
     
     return (
         <div className="gallery">  

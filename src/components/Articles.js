@@ -13,7 +13,7 @@ export const Articles = () => {
         dispatch(getArticles());
     }, []);
 
-    console.log('articles: ', articles);
+    // console.log('articles: ', articles);
 
     if (articlesStatus === REQUEST_STATUS.PENDING) {
         return <h3>Loading...</h3>
