@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearGallery, getGallery } from '../store/gallery/actions';
 import { PAINTS_IDS, REQUEST_STATUS } from '../utils/constants';
 import { GalleryItem } from './GalleryItem';
-import { GalleryItemTest } from './GalleryItemTest';
 
 export const Gallery = () => {
     const gallery = useSelector(state => state.gallery.gallery);

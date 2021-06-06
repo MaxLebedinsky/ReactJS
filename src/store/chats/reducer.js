@@ -35,7 +35,7 @@ export const chatsReducer = (state = initialState, action) => {
         }
         // сбрасываем unreadChatId с задержкой 2 сек, чтобы убрать подсветку
         case RESET_UNREAD_CHAT_ID: {
-                console.log('unreadChatId resetting...');
+                // console.log('unreadChatId resetting...');
                 return {
                     ...state,
                     unreadChatId: ''

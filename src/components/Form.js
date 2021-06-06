@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AUTHORS } from '../utils/constants';
+import { AUTHORS, theme } from '../utils/constants';
 import { TextField, Button, makeStyles } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -7,16 +7,15 @@ import teal from '@material-ui/core/colors/teal';
 import { withTheme } from '@material-ui/styles';
 // import { TextField, Button, Icon, makeStyles } from '@material-ui/core';
 
-const theme = createMuiTheme({
-    palette: {
-      primary: teal,
-    },
-  });
-
 const useStyles = makeStyles(() => ({
     textField: {
         backgroundColor: 'white',
-    }
+        marginTop: '15px',
+        // paddingTop: '20px',
+    },
+    button : {
+        marginTop: '20px',
+    },
 }));
 
 export const Form = ({ onAddMessage }) => {
@@ -52,14 +51,15 @@ export const Form = ({ onAddMessage }) => {
                     variant="outlined"
                     className={classes.textField}
                 />
-                <br/>
                 <Button 
                     endIcon={<SendIcon/>} 
                     type="submit" 
                     variant="contained" 
                     color="primary"
                     size="small"
-                    fullWidth={false}>
+                    fullWidth={false}
+                    className={classes.button}
+                    >
                     Send
                 </Button>
             </ThemeProvider>

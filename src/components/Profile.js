@@ -21,7 +21,7 @@ export const Profile = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(nameValue);
+        // console.log(nameValue);
         dispatch(changeName(nameValue, surnameValue));
         setNameValue('');
         setSurnameValue('');

@@ -12,6 +12,7 @@ import SignUp from './SignUp';
 import PrivateRoute from '../hocs/PrivateRoute';
 import PublicRoute from '../hocs/PublicRoute';
 import { auth } from '../services/firebase';
+import InstallPopup from './InstallPopup';
 
 export const Routes = () => {
     const [loading, setLoading] = useState(false);
@@ -31,7 +32,8 @@ export const Routes = () => {
         <h3>Loading...</h3>
     ) : (
         <BrowserRouter>
-            <Header/>
+            <Header />
+            <InstallPopup />
             <div className="layout">
                 <Switch>
                     <Route exact path="/">

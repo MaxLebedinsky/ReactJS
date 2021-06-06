@@ -126,15 +126,8 @@ h4 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
+  width: 90%;
   margin-top: 20px;
-}
-
-.MuiButton-root {
-  width: 120px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
 }
 
 .header {
@@ -164,10 +157,14 @@ h4 {
 
 .header-right {
   margin-right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.header-right span {
-  color: #F7F6F5;
+.header-right p {
+  display: inline-block;
+  color: #C99B2A;
   font-size: 0.8em;
 }
 
@@ -276,5 +273,115 @@ h4 {
   display: block;
   max-width: 250px;
   margin: 0 auto;
+}
+
+.speech-bubble-container {
+  position: fixed;
+  background-color: transparent;
+  width: 80%;
+  margin: 0 auto;
+  bottom: 30px;
+  left: 10%;
+  z-index: 100;
+}
+
+.speech-bubble {
+  padding: 20px 20px;
+  min-height: 58px;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-align: center;
+  color: #382E20;
+  background-color: #C99B2A;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #C99B2A;
+  border-bottom: 0;
+  margin-left: -20px;
+  margin-bottom: -20px;
+}
+
+.close-install-message-icon {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  color: #382E20 !important;
+}
+
+.push {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.push__image {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 667px) {
+  body {
+    font-size: 0.8rem;
+  }
+  .chat-list {
+    width: 35%;
+  }
+  .articles {
+    padding: 0 20px;
+  }
+  .gallery-item {
+    max-width: 45%;
+    margin: 10px 5px;
+  }
+  .gallery-img {
+    max-width: 100%;
+  }
+  .header {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .header-left {
+    margin-left: 10px;
+  }
+  .header-right {
+    display: block;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: center;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    width: 40%;
+  }
+  .header-right p {
+    color: #C99B2A;
+    font-size: 0.8em;
+    line-height: 0.8rem;
+    margin: 0;
+  }
+  .header-link {
+    display: inline-block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #F7F6F5;
+  }
+  .push {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

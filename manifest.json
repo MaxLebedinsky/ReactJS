@@ -1,11 +1,13 @@
 {
     "name": "Messenger GB",
     "short_name": "MGB",
-    "theme_color": "#2196f3",
-    "background_color": "#2196f3",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
+    "background_color": "#3A5963",
+    "theme_color": "#3A5963",
+    "orientation": "any",
+    "gcm_sender_id": "BGDD4MnoV0DJ7Fw-cJqg0-jhrcM5zKqOCQL82hiNq_P6nrMpP5V4doW7G1bIodbwS0wscSy5KZKYblvaokSSVmc",
     "icons": [
         {
             "src": "src/images/icons/icon-16x16.png",

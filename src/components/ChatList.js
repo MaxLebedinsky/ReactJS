@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, TextField, Button, makeStyles } from '@material-ui/core';
+import { List, ListItem, TextField, Button, makeStyles, ThemeProvider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
 import { addChat } from "../store/chats/actions";
+import { theme } from "../utils/constants";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -39,38 +40,41 @@ export const ChatList = () => {
     return(
         <div className="chat-list">
             <h3>Chat list</h3>
-            <List>
-                {chats.map((chat) => (
-                    <ListItem key={chat.Id}>
-                        <Link to={`/chats/${chat.Id}`} 
-                        className={`chat-list-link ${unreadChatId === chat.Id ? unreadClass : ''}`}>
-                            {chat.Name}
-                        </Link>
-                    </ListItem>
-                ))}
-            </List>
-            {/* <TextField value={value} onChange={handleChange}/> */}
-            <TextField
-                    // id="standard-multiline-flexible"
-                    multiline
-                    value={value}
-                    onChange={handleChange}
-                    label="new chat name"
-                    variant="outlined"
-                    size="small"
-                    className={classes.textField}
-                />
-            <Button 
-                onClick={handleAddChat}
-                    // endIcon={<SendIcon/>} 
-                    type="submit" 
-                    variant="contained" 
-                    color="primary"
-                    size="small"
-                    fullWidth={false}
-                    className={classes.button}>
-                    Add chat
-            </Button>
+            <ThemeProvider theme={theme}>
+                <List>
+                    {chats.map((chat) => (
+                        <ListItem key={chat.Id}>
+                            <Link to={`/chats/${chat.Id}`} 
+                            className={`chat-list-link ${unreadChatId === chat.Id ? unreadClass : ''}`}>
+                                {chat.Name}
+                            </Link>
+                        </ListItem>
+                    ))}
+                </List>
+                {/* <TextField value={value} onChange={handleChange}/> */}
+                <TextField
+                        // id="standard-multiline-flexible"
+                        multiline
+                        value={value}
+                        onChange={handleChange}
+                        label="new chat"
+                        variant="outlined"
+                        size="small"
+                        className={classes.textField}
+                    />
+                <Button 
+                    onClick={handleAddChat}
+                        // endIcon={<SendIcon/>} 
+                        type="submit" 
+                        variant="contained" 
+                        color="primary"
+                        size="small"
+                        fullWidth={false}
+                        className={classes.button}
+                        >
+                        Add chat
+                </Button>
+                </ThemeProvider>
             {/* <Button onClick={handleAddChat}>Add Chat</Button> */}
         </div>
     );

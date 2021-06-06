@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import {useSelector} from 'react-redux';
+import PushToggle from "./PushToggle";
 
 export const Header = () => {
     const name = useSelector(state => state.profile.name);
@@ -16,8 +17,9 @@ export const Header = () => {
                     </div>
                     <div className="header-right">
                         {/* Если есть имя или фамилия, выводим приветствие */}
-                        {(name || surname) && <span>Hello, {name} {surname}! </span>}
+                        {(name || surname) && <p>Hello, {name} {surname}! </p>}
                         <Link to="/profile" className="header-link">Profile</Link>
+                        <PushToggle />
                     </div>
                  </div>
     )

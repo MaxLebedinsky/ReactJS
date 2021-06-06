@@ -1,7 +1,22 @@
+import { createMuiTheme } from "@material-ui/core";
+import { teal } from "@material-ui/core/colors";
+
 export const AUTHORS = {
     USER: 'user',
     ROBOT: 'robot'
 };
+
+export const theme = createMuiTheme({
+    palette: {
+      primary: teal,
+    },
+    textField: {
+        backgroundColor: 'white',
+    },
+    button: {
+        marginTop: '20px',
+    }
+  });
 
 export const ROBOT_MESSAGE = "Robot's answer";
 
