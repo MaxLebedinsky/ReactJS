@@ -14,7 +14,7 @@ export const auth = firebase.auth;
 export const db = firebase.database();
 
 export function signup(email, password) {
-    console.log(email, password);
+    // console.log(email, password);
     return auth().createUserWithEmailAndPassword(email, password);
 };
 

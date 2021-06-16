@@ -3,7 +3,7 @@ import { API_URL_GALLERY } from "../../utils/constants";
 export const GALLERY_REQUEST = 'GALLERY::REQUEST';
 export const GALLERY_SUCCESS = 'GALLERY::SUCCESS';
 export const GALLERY_FAILURE = 'GALLERY::FAILURE';
-export const GALLERY_SET_CURRENT_GALLERY = 'GALLERY::SET_CURRENT_GALLERY'
+export const GALLERY_CLEAR = 'GALLERY::CLEAR';
 
 export const galleryRequest = () => ({
     type: GALLERY_REQUEST
@@ -14,18 +14,18 @@ export const gallerySuccess = (gallery) => ({
     gallery: gallery
 });
 
-export const setCurrentGallery = (currentGallery) => ({
-    type: GALLERY_SET_CURRENT_GALLERY,
-    currentGallery,
-})
 
 export const galleryFailure = (error) => ({
     type: GALLERY_FAILURE,
     error,
 });
 
+export const clearGallery = () => ({
+    type: GALLERY_CLEAR
+})
+
 // THUNK
-export const getGallery = (itemId, currentGallery) => (dispatch) => {
+export const getGallery = (itemId) => (dispatch) => {
     dispatch(galleryRequest());
 
     fetch(`${API_URL_GALLERY}${itemId}`)
@@ -36,11 +36,8 @@ export const getGallery = (itemId, currentGallery) => (dispatch) => {
             return response.json();
         })
         .then(data => {
-            currentGallery.push(data);
-            // console.log('currentGallery from fetch: ', currentGallery);
-            dispatch(setCurrentGallery(currentGallery));
-            // console.log('data from fetch: ', data)
             dispatch(gallerySuccess(data));
+            // console.log(data);
         })
         .catch((err) => {
             dispatch(galleryFailure(err.message))
